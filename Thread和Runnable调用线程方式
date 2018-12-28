@@ -1,0 +1,44 @@
+public class Test{
+    
+public static void main(String[] args){
+        
+Thread thread1 = new Thread(new MyRunnable());    //如果时继承的Thread则不用先新建Thread对象，直接调用start方法。
+        
+Thread thread2 = new Thread(new MyRunnable());
+        
+thread1.start();
+        
+thread2.start();
+    
+}
+
+}
+
+
+
+class MyRunnable implements Runnable {
+
+   
+ @Override
+    
+public void run() {
+        
+try {
+            
+for (int i = 0; i < 10; i++) {
+                
+System.out.println(i);
+                
+Thread.sleep(100);
+            
+}
+        
+} catch (Exception e) {
+            
+e.printStackTrace();
+        
+}
+    
+}
+
+}
