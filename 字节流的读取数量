@@ -1,0 +1,35 @@
+import java.io.*;
+public class Test{
+public static void main(String[] args) {
+
+File f=new File("hello1.txt");
+FileInputStream fis=null;
+/*
+FileWriter fw=null;
+try {
+fw=new FileWriter(f);
+for(int i=0;i<10;i++){
+fw.write("this \t is \t an \n example \t");
+fw.flush();
+}
+fw.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+*/
+try{
+fis=new FileInputStream(f);
+byte [] bytes=new byte[30];   //每次从流中读取的数据取决于数组的大小。
+int n=0;
+n=fis.read(bytes);
+
+String s=new String(bytes,0,n);
+System.out.println(s);
+fis.close();
+}catch(Exception e ){
+e.printStackTrace();
+}
+
+}
+}
