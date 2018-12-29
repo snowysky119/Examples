@@ -1,0 +1,56 @@
+public class Test{
+public static void main(String[] args) {
+
+TicketWindow tw1=new TicketWindow();
+
+Thread t1=new Thread(tw1);
+Thread t2=new Thread(tw1);
+Thread t3=new Thread(tw1);
+t1.start();
+t2.start();
+t3.start();
+}
+}
+
+class TicketWindow implements Runnable {
+
+private int nums=2000;
+private Dog myDog=new Dog();
+public void run() {
+while(true){
+
+try {
+Thread.sleep(1000);
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+synchronized(myDog){    //如果去掉Dog方法之后用synchronized(this){} 效果是一样的
+if(nums>0){
+
+//Thread.currentThread().getName() 得到当前线程的名字
+//System.out.println(Thread.currentThread());
+System.out.println(Thread.currentThread().getName()+" 正在售出第"+nums+" 张票");   
+//currentThread()只是得到当前线程对象的引用，getName()得到当前线程对象引用的一个实体。
+nums--;
+}else{
+
+break;
+}
+  }
+    }
+      }
+       }
+class Dog{
+}
+
+备注（对象和对象的引用）：
+Person person;
+person = new Person("张三");
+  这两行代码实现的功能和上面的一行代码是完全一样的。大家都知道，在Java中new是用来在堆上创建对象用的，
+  如果person是一个对象的话，那么第二行为何还要通过new来创建对象呢？由此可见，person并不是所创建的对象，
+  是什么？上面的一段话说的很清楚，“操纵的标识符实际是指向一个对象的引用”，也就是说person是一个引用，
+  是指向一个可以指向Person类的对象的引用。真正创建对象的语句是右边的new Person("张三");
+
+
+
