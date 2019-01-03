@@ -1,0 +1,18 @@
+import java.util.*;
+import java.io.*;
+
+public class Test{
+    public static void main(String[] args) {
+        System.out.println(foo());
+    }
+    
+    public static String foo() {
+        int i=0;
+        while(true) {     //此处参数如果时i<10，编译后会出错，缺少返回语句，因为while如果是假的时候是没有返回语句的。
+            return "ggg";
+        }
+    }
+}
+
+备注：运行结果： ggg
+
